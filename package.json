@@ -1,0 +1,10 @@
+{
+  "name": "invoice-data-parser",
+  "version": "1.0.0",
+  "description": "GAS that parses SII's invoice spreadsheets into a dynamic table friendly format",
+  "main": "src/index.js",
+  "repository": "git@github.com:sasalatart/invoice-data-parser.git",
+  "author": "Sebastián Salata R-T <sa.salatart@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
