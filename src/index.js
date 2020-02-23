@@ -21,11 +21,11 @@ function setFinalValues(sheet, finalValues) {
 
 // eslint-disable-next-line no-unused-vars
 function parse() {
-  let spreadsheet;
+  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+
   let sheet;
   let valuesGenerator;
   try {
-    spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     sheet = spreadsheet.getSheetByName("in");
     if (!sheet) throw new NoInputSheetFoundError();
 
