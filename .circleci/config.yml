@@ -67,6 +67,6 @@ workflows:
       - deploy:
           requires:
             - lint
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master
