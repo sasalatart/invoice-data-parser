@@ -6,5 +6,15 @@
   },
   "rules": {
     "prettier/prettier": "error"
+  },
+  "globals": {
+    "getHeadersToIndexes": "readonly",
+    "handleError": "readonly",
+    "HeadersNotFoundError": "readonly",
+    "isUpperHeader": "readonly",
+    "LOWER_HEADERS": "readonly",
+    "makeValuesGenerator": "readonly",
+    "NoInputSheetFoundError": "readonly",
+    "UPPER_HEADERS": "readonly"
   }
 }
