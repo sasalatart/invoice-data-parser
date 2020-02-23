@@ -15,14 +15,18 @@ function setFinalValues(sheet, finalValues) {
   sheet
     .getRange(1, 1, finalValues.length, finalValues[0].length)
     .setValues(finalValues);
+
+  SpreadsheetApp.flush();
 }
 
 // eslint-disable-next-line no-unused-vars
 function parse() {
+  let spreadsheet;
   let sheet;
   let valuesGenerator;
   try {
-    sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("in");
+    spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    sheet = spreadsheet.getSheetByName("in");
     if (!sheet) throw new NoInputSheetFoundError();
 
     const displayValues = sheet.getDataRange().getDisplayValues();
@@ -43,4 +47,5 @@ function parse() {
   }
 
   setFinalValues(sheet, finalValues);
+  sendResults(spreadsheet);
 }

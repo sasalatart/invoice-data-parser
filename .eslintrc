@@ -15,6 +15,7 @@
     "LOWER_HEADERS": "readonly",
     "makeValuesGenerator": "readonly",
     "NoInputSheetFoundError": "readonly",
+    "sendResults": "readonly",
     "UPPER_HEADERS": "readonly"
   }
 }
