@@ -43,7 +43,4 @@ function parse() {
   }
 
   setFinalValues(sheet, finalValues);
-
-  // eslint-disable-next-line no-console
-  console.log(finalValues);
 }
