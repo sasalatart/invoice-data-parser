@@ -6,11 +6,23 @@ function onOpen() {
     .addToUi();
 }
 
+function setFinalValues(sheet, finalValues) {
+  sheet
+    .getDataRange()
+    .clearFormat()
+    .clearContent();
+
+  sheet
+    .getRange(1, 1, finalValues.length, finalValues[0].length)
+    .setValues(finalValues);
+}
+
 // eslint-disable-next-line no-unused-vars
 function parse() {
+  let sheet;
   let valuesGenerator;
   try {
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("in");
+    sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("in");
     if (!sheet) throw new NoInputSheetFoundError();
 
     const displayValues = sheet.getDataRange().getDisplayValues();
@@ -29,6 +41,8 @@ function parse() {
     });
     nextValue = valuesGenerator.next();
   }
+
+  setFinalValues(sheet, finalValues);
 
   // eslint-disable-next-line no-console
   console.log(finalValues);
