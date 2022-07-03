@@ -18,7 +18,7 @@ class NoInputSheetFoundError extends Error {
 class HeadersNotFoundError extends Error {
   constructor(headers = []) {
     const stringifiedHeaders = headers.join(", ");
-    const message = `Algunos títulos no se encontraron: (${stringifiedHeaders})`;
+    const message = `Algunos títulos no se encontraron: ${stringifiedHeaders}`;
     super(message);
     this.name = "HeadersNotFoundError";
   }
