@@ -8,14 +8,15 @@
     "prettier/prettier": "error"
   },
   "globals": {
-    "getHeadersToIndexes": "readonly",
-    "handleError": "readonly",
     "HeadersNotFoundError": "readonly",
-    "isUpperHeader": "readonly",
+    "INPUT_SHEET_NAME": "readonly",
     "LOWER_HEADERS": "readonly",
-    "makeValuesGenerator": "readonly",
     "NoInputSheetFoundError": "readonly",
+    "UPPER_HEADERS": "readonly",
+    "getHeadersToIndices": "readonly",
+    "handleError": "readonly",
+    "isUpperHeader": "readonly",
+    "makeValuesGenerator": "readonly",
     "sendResults": "readonly",
-    "UPPER_HEADERS": "readonly"
   }
 }

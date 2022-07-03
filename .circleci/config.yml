@@ -1,5 +1,5 @@
 node-cache-key: &node-cache-key node-v1-{{ checksum "package.json" }}
-node-docker-image: &node-docker-image circleci/node:10.15.3
+node-docker-image: &node-docker-image cimg/node:10.24.1
 working-directory: &working-directory ~/tmp
 
 version: 2.1
