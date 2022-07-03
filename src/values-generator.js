@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 function* makeValuesGenerator(rangeValues) {
-  const { upperIndexes, lowerIndexes } = getHeadersToIndexes(rangeValues);
+  const { upperIndices, lowerIndices } = getHeadersToIndices(rangeValues);
 
   let currentIndex = 0;
 
@@ -9,13 +9,13 @@ function* makeValuesGenerator(rangeValues) {
     currentIndex += 1;
 
     const rawUpperRow = rangeValues[currentIndex];
-    const upperRow = upperIndexes.map(index => rawUpperRow[index]);
+    const upperRow = upperIndices.map(index => rawUpperRow[index]);
 
     // Skip the row we just added, and the row next to it containing lower headers...
     currentIndex += 2;
 
     const lowerRows = [];
-    while (!isUpperHeader(rangeValues[currentIndex], upperIndexes)) {
+    while (!isUpperHeader(rangeValues[currentIndex], upperIndices)) {
       const currentRow = rangeValues[currentIndex];
 
       if (!currentRow) {
@@ -23,7 +23,7 @@ function* makeValuesGenerator(rangeValues) {
         return;
       }
 
-      lowerRows.push(lowerIndexes.map(lowerIndex => currentRow[lowerIndex]));
+      lowerRows.push(lowerIndices.map(lowerIndex => currentRow[lowerIndex]));
       currentIndex += 1;
     }
 
