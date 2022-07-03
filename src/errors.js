@@ -8,16 +8,17 @@ function handleError(error, humanMessage) {
 }
 
 class NoInputSheetFoundError extends Error {
-  constructor(message = "No se encontró la hoja de entrada de datos") {
+  constructor(sheetName = INPUT_SHEET_NAME) {
+    const message = `No se encontró la hoja de entrada de datos ("${sheetName}")`;
     super(message);
     this.name = "NoInputSheetFoundError";
   }
 }
 
 class HeadersNotFoundError extends Error {
-  constructor(
-    message = "Algunos títulos no se encontraron. Verifique que estén presentes en la hoja de datos."
-  ) {
+  constructor(headers = []) {
+    const stringifiedHeaders = headers.join(", ");
+    const message = `Algunos títulos no se encontraron: ${stringifiedHeaders}`;
     super(message);
     this.name = "HeadersNotFoundError";
   }

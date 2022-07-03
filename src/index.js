@@ -1,3 +1,5 @@
+const INPUT_SHEET_NAME = "data";
+
 // eslint-disable-next-line no-unused-vars
 function onOpen() {
   SpreadsheetApp.getUi()
@@ -26,8 +28,8 @@ function parse() {
   let sheet;
   let valuesGenerator;
   try {
-    sheet = spreadsheet.getSheetByName("in");
-    if (!sheet) throw new NoInputSheetFoundError();
+    sheet = spreadsheet.getSheetByName(INPUT_SHEET_NAME);
+    if (!sheet) throw new NoInputSheetFoundError(INPUT_SHEET_NAME);
 
     const displayValues = sheet.getDataRange().getDisplayValues();
     valuesGenerator = makeValuesGenerator(displayValues);

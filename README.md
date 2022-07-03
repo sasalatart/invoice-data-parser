@@ -21,9 +21,8 @@ authorities (SII), and parses it into a "dynamic table friendly" format.
 ## Usage
 
 1. Open your spreadsheet
-2. Make sure there is a sheet called "in"
-3. Copy and paste your personal invoices data obtained from the SII into the sheet
-4. Click on "SII" -> "Transformar", and wait for the execution to finish.
+2. Copy and paste your personal invoices data obtained from the SII into a sheet called "data"
+3. Click on "SII" -> "Transformar", and wait for the execution to finish.
 
 You should now see the data transformed into the new format, and also should have received an email
 with the results.

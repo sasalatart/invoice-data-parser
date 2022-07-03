@@ -3,9 +3,8 @@ const UPPER_HEADERS = [
   "Folio",
   "FechaEmision",
   "TipoDespacho",
-  "RutReceptor",
-  "RazonSocialReceptor",
-  "Acteco"
+  "RutEmisor",
+  "RazonSocialEmisor"
 ];
 
 const LOWER_HEADERS = ["Descripcion", "Cantidad", "Precio"];
@@ -17,39 +16,51 @@ function areEqual(value, expectedValue) {
 }
 
 // eslint-disable-next-line no-unused-vars
-function isUpperHeader(row, upperIndexes) {
+function isUpperHeader(row, upperIndices) {
   if (!row) return false;
 
-  return upperIndexes.every((mappedIndex, index) =>
+  return upperIndices.every((mappedIndex, index) =>
     areEqual(row[mappedIndex], UPPER_HEADERS[index])
   );
 }
 
-function mapToIndex(expectedHeaders, values) {
-  const indexes = expectedHeaders.map(header =>
-    values.findIndex(value => areEqual(value, header))
-  );
+function generateIndicesForHeaders(expectedHeaders, row) {
+  const headersNotFound = [];
 
-  if (indexes.some(index => index < 0)) throw new HeadersNotFoundError();
+  const indices = expectedHeaders.map(expectedHeader => {
+    const index = row.findIndex(value => areEqual(value, expectedHeader));
+    if (index < 0) {
+      headersNotFound.push(expectedHeader);
+    }
+    return index;
+  });
 
-  return indexes;
+  if (headersNotFound.length > 0) {
+    throw new HeadersNotFoundError(headersNotFound);
+  }
+
+  return indices;
 }
 
-function findFirstHeaderRow(rangeValues, posHeaders) {
+function findRowForHeaders(rangeValues, expectedHeaders) {
   const firstHeaderRow = rangeValues.find(row =>
-    row.find(header => areEqual(header, posHeaders[0]))
+    row.find(header => areEqual(header, expectedHeaders[0]))
   );
-  if (!firstHeaderRow) throw new HeadersNotFoundError();
+
+  if (!firstHeaderRow) {
+    throw new HeadersNotFoundError(expectedHeaders);
+  }
+
   return firstHeaderRow;
 }
 
 // eslint-disable-next-line no-unused-vars
-function getHeadersToIndexes(rangeValues) {
-  const firstUpperHeadersRow = findFirstHeaderRow(rangeValues, UPPER_HEADERS);
-  const firstLowerHeadersRow = findFirstHeaderRow(rangeValues, LOWER_HEADERS);
+function getHeadersToIndices(rangeValues) {
+  const upperHeadersRow = findRowForHeaders(rangeValues, UPPER_HEADERS);
+  const lowerHeadersRow = findRowForHeaders(rangeValues, LOWER_HEADERS);
 
   return {
-    upperIndexes: mapToIndex(UPPER_HEADERS, firstUpperHeadersRow),
-    lowerIndexes: mapToIndex(LOWER_HEADERS, firstLowerHeadersRow)
+    upperIndices: generateIndicesForHeaders(UPPER_HEADERS, upperHeadersRow),
+    lowerIndices: generateIndicesForHeaders(LOWER_HEADERS, lowerHeadersRow)
   };
 }
