@@ -24,7 +24,7 @@ commands:
   clasp_setup:
     description: Install clasp and set its credentials & parameters
     steps:
-      - run: sudo npm i -g @google/clasp
+      - run: sudo npm i -g @google/clasp@2.3.0
       - run: clasp setting scriptId $SCRIPT_ID
       - run: cd $HOME && echo $CLASP_CREDENTIALS > .clasprc.json
 

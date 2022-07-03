@@ -8,7 +8,7 @@ authorities (SII), and parses it into a "dynamic table friendly" format.
 
 ## Dev Setup
 
-1. Make sure that you have [CLASP][clasp] installed
+1. Make sure that you have [CLASP][clasp] v.2.3.0 installed
 2. Login with CLASP via `clasp login`
 3. Create a Google Spreadsheet
 4. Click on "Extensions" -> "Apps Script"
