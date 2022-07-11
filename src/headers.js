@@ -4,7 +4,9 @@ const UPPER_HEADERS = [
   "FechaEmision",
   "TipoDespacho",
   "RutEmisor",
-  "RazonSocialEmisor"
+  "RazonSocialEmisor",
+  "RutReceptor",
+  "RazonSocialReceptor"
 ];
 
 const LOWER_HEADERS = ["Descripcion", "Cantidad", "Precio"];
